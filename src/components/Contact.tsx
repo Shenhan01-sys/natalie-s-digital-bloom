@@ -131,9 +131,8 @@ const Contact = () => {
                     Send Message
                   </span>
                   <Send
-                    className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${
-                      isSubmitting ? 'absolute animate-ping' : ''
-                    }`}
+                    className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${isSubmitting ? 'absolute animate-ping' : ''
+                      }`}
                   />
                 </Button>
               </form>
@@ -189,8 +188,8 @@ const Contact = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <p className="text-muted-foreground text-sm">
-              Made with <Heart className="w-4 h-4 inline text-primary" /> and{' '}
-              <Code className="w-4 h-4 inline text-primary" /> by Natalie
+              Made with <Heart className="w-4 h-4 inline text-primary" /> by Natalie and{' '}
+              <Code className="w-4 h-4 inline text-primary" /> by Hans Gunawan
             </p>
             <p className="text-muted-foreground text-sm">
               © 2026 Natalie Netania Sulistio. All rights reserved.

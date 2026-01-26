@@ -41,10 +41,10 @@ const Hero = () => {
                 <span className="text-primary">Sulistio</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto md:mx-0 animate-fade-in-up stagger-3">
-                HR Management Student & Web3 Enthusiast.
+                HR Management Student.
                 <br />
                 <span className="text-foreground/80 font-medium">
-                  Bridging Human Potential with Future Technology.
+                  Bridging Human Potential with Digital Innovation.
                 </span>
               </p>
             </div>
@@ -76,7 +76,7 @@ const Hero = () => {
                 <p className="text-sm text-muted-foreground">Projects</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-serif font-bold text-primary">5+</p>
+                <p className="text-2xl font-serif font-bold text-primary">7+</p>
                 <p className="text-sm text-muted-foreground">Experiences</p>
               </div>
               <div className="text-center">
@@ -91,7 +91,7 @@ const Hero = () => {
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-gradient-warm/40 rounded-full blur-3xl scale-110" />
-              
+
               {/* Image container with organic shape */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 float-animation">
                 <div
@@ -101,14 +101,11 @@ const Hero = () => {
                   }}
                 >
                   {/* Placeholder for profile image */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary to-primary/10">
-                    <div className="text-center p-8">
-                      <div className="w-32 h-32 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                        <span className="text-5xl font-serif font-bold text-primary">N</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground">Your photo here</p>
-                    </div>
-                  </div>
+                  <img
+                    src="/profilePict01.png"
+                    alt="Natalie Netania Sulistio"
+                    className="w-full h-full object-cover object-center scale-98"
+                  />
                 </div>
               </div>
 

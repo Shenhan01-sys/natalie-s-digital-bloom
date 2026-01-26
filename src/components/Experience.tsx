@@ -12,55 +12,83 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: 1,
-    title: 'Koordinator Tim Teknis',
-    company: 'DutaWacana Web3',
-    period: 'Januari 2026 – Sekarang',
+    title: 'Store Assistant',
+    company: 'Kingkong Flames',
+    period: 'Apr 2025 - Saat ini',
     description: [
-      'Memimpin tim teknis dalam komunitas yang berfokus pada teknologi Web3 di lingkungan kampus.',
-      'Mengorganisir kegiatan workshop dan sesi belajar terkait blockchain dan pengembangan dApp.',
+      'Managed high-volume printing services and document processing.',
+      'Oversaw daily inventory of office and school supplies.',
+      'Provided excellent customer service and resolved technical issues.',
     ],
-    icon: <Settings className="w-6 h-6" />,
+    icon: <Wallet className="w-6 h-6" />,
   },
   {
     id: 2,
-    title: 'Asisten Dosen (Database Design)',
+    title: 'Social Media Admin (Faculty of Business)',
     company: 'Universitas Kristen Duta Wacana',
-    period: 'Januari 2026 – Sekarang',
+    period: 'Mar 2025 - Saat ini',
     description: [
-      'Mendampingi dosen dalam proses pengajaran mata kuliah Perancangan Basis Data.',
-      'Membantu mahasiswa dalam memahami konsep SQL dan manajemen data.',
+      'Managed the official Instagram account of the Faculty of Business.',
+      'Developed creative visual content and captions to promote faculty programs.',
+      'Monitored social media analytics and responded to inquiries.',
     ],
-    icon: <GraduationCap className="w-6 h-6" />,
+    icon: <Smartphone className="w-6 h-6" />,
   },
   {
     id: 3,
-    title: 'Sekretaris BEM',
-    company: 'Fakultas Bisnis UKDW',
-    period: '2024 – 2025',
-    description: [
-      'Mengelola administrasi surat-menyurat dan pengarsipan dokumen organisasi.',
-      'Mengatur jadwal rapat dan notulensi kegiatan kemahasiswaan.',
-    ],
-    icon: <FileText className="w-6 h-6" />,
-  },
-  {
-    id: 4,
-    title: 'Business Owner',
+    title: 'Owner',
     company: 'Monic Bouquet',
-    period: '2023 – Sekarang',
+    period: 'Mei 2023 - Saat ini',
     description: [
-      'Mengelola operasional bisnis florist secara mandiri mulai dari produksi, pemasaran, hingga layanan pelanggan.',
+      'Established and managed a boutique floral business.',
+      'Handled end-to-end business operations including product design.',
+      'Executed digital marketing strategies to build a loyal customer base.',
     ],
     icon: <Flower className="w-6 h-6" />,
   },
   {
-    id: 5,
-    title: 'Social Media Admin & Koordinator Danus',
-    company: 'Berbagai Organisasi Kampus',
-    period: '2023 – Sekarang',
+    id: 4,
+    title: 'Registration Volunteer',
+    company: 'Pekan Olahraga Mahasiswa Daerah DIY',
+    period: 'Des 2024',
     description: [
-      'Mengelola konten dan interaksi media sosial untuk meningkatkan engagement.',
-      'Memimpin strategi pencarian dana untuk berbagai kegiatan kepanitiaan kampus.',
+      'Managed participant databases and performed document verification.',
+      'Coordinated on-site registration workflows for efficient service.',
+    ],
+    icon: <FileText className="w-6 h-6" />,
+  },
+  {
+    id: 5,
+    title: 'Treasurer',
+    company: 'Mooncake Festival Committee UKDW',
+    period: 'Sep 2024',
+    description: [
+      'Developed the Budget Plan (RAB) and managed transparent cash flow.',
+      'Verified transaction receipts to maintain data accuracy.',
+      'Prepared the final Financial Accountability Report (LPJ).',
+    ],
+    icon: <Wallet className="w-6 h-6" />,
+  },
+  {
+    id: 6,
+    title: 'Secretary',
+    company: 'BEM Fakultas Bisnis UKDW',
+    period: 'Feb 2024 – Sekarang',
+    description: [
+      'Manage organizational correspondence and systematic document archiving.',
+      'Draft meeting minutes and coordinate the internal agenda.',
+      'Review and verify P3DK proposals to ensure smooth program financing.',
+    ],
+    icon: <Settings className="w-6 h-6" />,
+  },
+  {
+    id: 7,
+    title: 'Design & Documentation',
+    company: 'PMK Soli Deo Gloria UKDW',
+    period: 'Feb 2024 – Feb 2024',
+    description: [
+      'Managed visual communication and digital publications.',
+      'Responsible for documenting all event series as official archives.',
     ],
     icon: <Smartphone className="w-6 h-6" />,
   },
@@ -88,18 +116,16 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <div
                 key={exp.id}
-                className={`relative flex flex-col md:flex-row gap-4 md:gap-8 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
+                className={`relative flex flex-col md:flex-row gap-4 md:gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background md:-translate-x-1/2 z-10" />
 
                 {/* Card */}
                 <div
-                  className={`ml-12 md:ml-0 md:w-1/2 ${
-                    index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
-                  }`}
+                  className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
+                    }`}
                 >
                   <div className="glass-card rounded-2xl p-6 hover-lift group cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
                     {/* Icon */}

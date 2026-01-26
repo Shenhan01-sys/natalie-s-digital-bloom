@@ -18,20 +18,12 @@ const About = () => {
             {/* Main Story */}
             <div className="glass-card rounded-2xl p-8 md:p-12 hover-lift">
               <p className="text-lg leading-relaxed text-foreground/90 mb-6">
-                Saya adalah mahasiswa Manajemen di{' '}
-                <span className="text-primary font-medium">Universitas Kristen Duta Wacana</span>{' '}
-                dengan konsentrasi Manajemen Sumber Daya Manusia (MSDM). Memiliki dedikasi tinggi dalam pengembangan organisasi, administrasi, dan manajemen talenta.
-              </p>
-              <p className="text-lg leading-relaxed text-foreground/90 mb-6">
-                Aktif dalam berbagai kegiatan akademis maupun non-akademis, mulai dari menjadi{' '}
-                <span className="text-primary font-medium">Asisten Dosen</span>, memimpin sebagai{' '}
-                <span className="text-primary font-medium">Sekretaris BEM</span>, hingga mengeksplorasi teknologi{' '}
-                <span className="text-primary font-medium">Web3</span> sebagai Koordinator Tim Teknis.
+                An Undergraduate Management student at{' '}
+                <span className="text-primary font-medium">Duta Wacana Christian University</span>{' '}
+                specializing in Human Resource Management (HRM). I am actively involved in various student organizations, which has significantly honed my leadership and teamwork skills.
               </p>
               <p className="text-lg leading-relaxed text-foreground/90">
-                Tujuan karir saya adalah untuk berkembang di bidang Human Resources dan Administrasi, didukung dengan kemampuan analisis data dan komunikasi yang baik. Saya percaya bahwa masa depan HR terletak pada perpaduan antara{' '}
-                <span className="font-serif italic text-primary">human touch</span> dan{' '}
-                <span className="font-serif italic text-primary">technological innovation</span>.
+                With practical experience in administration and coordination, I am recognized as a meticulous and communicative individual. I possess a strong passion for applying HRM principles to professional employee management and development.
               </p>
             </div>
 
@@ -43,7 +35,7 @@ const About = () => {
                 </div>
                 <span className="text-sm font-medium text-foreground">People</span>
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent" />
                 <ArrowRight className="w-5 h-5 text-primary" />
@@ -72,12 +64,12 @@ const About = () => {
                 </div>
                 <div className="flex gap-6">
                   <div className="text-center">
-                    <p className="text-2xl font-serif font-bold text-primary">Sem 6</p>
-                    <p className="text-xs text-muted-foreground">Current</p>
+                    <p className="text-2xl font-serif font-bold text-primary">2023</p>
+                    <p className="text-xs text-muted-foreground">Start Year</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-serif font-bold text-primary">3.5 Th</p>
-                    <p className="text-xs text-muted-foreground">Target Lulus</p>
+                    <p className="text-2xl font-serif font-bold text-primary">3.5 Y</p>
+                    <p className="text-xs text-muted-foreground">Target Grad</p>
                   </div>
                 </div>
               </div>

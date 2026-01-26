@@ -8,7 +8,7 @@ interface Project {
   id: number;
   title: string;
   description: string;
-  category: 'tech' | 'research' | 'hr';
+  category: 'digital' | 'research' | 'hr';
   tags: string[];
   event?: string;
   role?: string;
@@ -17,54 +17,43 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Progressive Escrow (Blockchain dApp)',
-    description: 'Mengembangkan aplikasi terdesentralisasi (dApp) menggunakan bahasa pemrograman Move. Aplikasi ini berfungsi sebagai layanan escrow untuk pembayaran berbasis pencapaian (milestone) yang aman dan transparan.',
-    category: 'tech',
-    tags: ['Move Lang', 'Blockchain', 'Sui', 'dApp'],
-    event: 'Sui Dev Campus Workshop (Januari 2026)',
-    role: 'Developer/Peserta',
+    title: 'Monic Bouquet (Business)',
+    description: 'Managed end-to-end operations of a boutique floral business, including product design, digital marketing, and customer relationship management.',
+    category: 'hr',
+    tags: ['Entrepreneurship', 'Business Management', 'Digital Marketing'],
+    role: 'Owner',
   },
   {
     id: 2,
-    title: 'Riset Analisis Kebijakan Hilirisasi Tambang',
-    description: 'Melakukan studi literatur dan analisis data mengenai dampak kebijakan hilirisasi terhadap ekonomi nasional. Fokus pada kinerja sektor pertambangan (Minyak, Gas, Mineral) 2020-2024.',
+    title: 'Centrino Business Plan Competition 2025',
+    description: 'Developing a comprehensive business proposal including market analysis, financial projections, and strategic marketing plans as a Finalist.',
     category: 'research',
-    tags: ['Research', 'Policy Analysis', 'Mining Sector'],
+    tags: ['Business Planning', 'Market Analysis', 'Financial Projections'],
+    event: 'Universitas Kristen Duta Wacana',
+    role: 'Finalist',
   },
   {
     id: 3,
-    title: 'Analisis Risiko Operasional Bank Jatim',
-    description: 'Menganalisis profil risiko operasional bank daerah dengan pendekatan Basic Indicator Approach (BIA) untuk memenuhi tugas Manajemen Risiko.',
-    category: 'research',
-    tags: ['Risk Management', 'Banking', 'Financial Analysis'],
+    title: 'Faculty of Business Social Media',
+    description: 'Managed official Instagram account, developed content strategy, and analyzed social media metrics to improve engagement for the Faculty of Business.',
+    category: 'digital',
+    tags: ['Social Media Management', 'Content Strategy', 'Analytics'],
+    role: 'Social Media Admin',
   },
   {
     id: 4,
-    title: 'FitAI (Web Application)',
-    description: 'Proyek aplikasi web kesehatan (full-stack) yang mengintegrasikan model AI dari IBM untuk memberikan rekomendasi kebugaran personal.',
-    category: 'tech',
-    tags: ['React.js', 'Full-Stack', 'IBM AI', 'Health Tech'],
-  },
-  {
-    id: 5,
-    title: 'Bloom Charm (Business Plan)',
-    description: 'Perencanaan bisnis produk aksesoris yang dibuat dari limbah plastik daur ulang untuk mengurangi sampah lingkungan. Menerapkan konsep Circular Economy.',
-    category: 'hr',
-    tags: ['Business Plan', 'Circular Economy', 'Sustainability'],
-  },
-  {
-    id: 6,
-    title: 'KKN Tematik - Kampung Cokrodirjan',
-    description: 'Terlibat dalam sosialisasi dan implementasi program pengelolaan sampah rumah tangga di tingkat kelurahan. Fokus pada manajemen sampah dan edukasi masyarakat.',
-    category: 'hr',
-    tags: ['Community Service', 'Waste Management', 'Social Impact'],
+    title: 'Mooncake Festival Financial Management',
+    description: 'Developed budget plans (RAB), managed cash flow, verified transactions, and prepared financial accountability reports (LPJ) for the event committee.',
+    category: 'research',
+    tags: ['Financial Reporting', 'Budgeting', 'Accounting'],
+    role: 'Treasurer',
   },
 ];
 
 const categoryConfig = {
   all: { label: 'All Works', filter: () => true },
   research: { label: 'HR & Research', filter: (p: Project) => p.category === 'research' || p.category === 'hr' },
-  tech: { label: 'Tech & Web3', filter: (p: Project) => p.category === 'tech' },
+  digital: { label: 'Digital & Creative', filter: (p: Project) => p.category === 'digital' },
 };
 
 const Projects = () => {
@@ -117,7 +106,7 @@ const Projects = () => {
                         {project.id}
                       </span>
                     </div>
-                    
+
                     {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <Button

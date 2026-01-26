@@ -13,31 +13,32 @@ interface Certification {
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'Human Resources',
-    skills: ['Recruitment', 'Administration', 'Organizational Behavior', 'Talent Management'],
+    title: 'HR & Administration',
+    skills: ['HR Management', 'Administration', 'Recruitment', 'Organizational Behavior', 'Employee Relations'],
     color: 'from-primary to-accent',
   },
   {
-    title: 'Tech Stack',
-    skills: ['React.js', 'Oracle SQL', 'Move Language', 'Microsoft Office Suite'],
+    title: 'Finance & Business',
+    skills: ['Financial Management', 'Budgeting', 'Cash Flow Management', 'Business Planning', 'Entrepreneurship'],
     color: 'from-accent to-primary',
   },
   {
-    title: 'Design Tools',
-    skills: ['Canva', 'CapCut', 'Figma Basics'],
+    title: 'Digital & Creative',
+    skills: ['Social Media Management', 'Content Strategy', 'Canva', 'Graphic Design', 'Copywriting'],
     color: 'from-gradient-warm to-primary',
   },
   {
     title: 'Soft Skills',
-    skills: ['Public Speaking', 'Leadership', 'Time Management', 'Critical Thinking', 'Research'],
+    skills: ['Leadership', 'Teamwork', 'Public Speaking', 'Time Management', 'Critical Thinking', 'Communication'],
     color: 'from-primary to-gradient-warm',
   },
 ];
 
 const certifications: Certification[] = [
-  { name: 'Sui Dev Campus Workshop Participant', issuer: 'UGM (Januari 2026)' },
-  { name: 'Kandidat Pilmapres', issuer: 'Tingkat Universitas UKDW' },
-  { name: 'HR Courses Completion', issuer: 'MySkill' },
+  { name: 'Employee Life Cycle Management', issuer: 'MySkill (Jan 2026)' },
+  { name: 'Fundamentals HR Frameworks', issuer: 'MySkill (Jan 2026)' },
+  { name: 'Academic Achievement Scholarship', issuer: 'Universitas Kristen Duta Wacana (Feb 2025)' },
+  { name: 'Finalist - Centrino Business Plan Competition', issuer: 'Universitas Kristen Duta Wacana (Okt 2025)' },
 ];
 
 const Skills = () => {
