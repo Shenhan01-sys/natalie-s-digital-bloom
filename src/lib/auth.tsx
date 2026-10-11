@@ -2,6 +2,12 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import type { Session } from "@supabase/supabase-js";
 import { supabase, supabaseReady } from "./supabase";
 
+/** RLS only lets a user see their own row in `admins`, so a hit means "is admin". */
+export async function checkAdmin(userId: string) {
+  const { data, error } = await supabase.from("admins").select("user_id").eq("user_id", userId).maybeSingle();
+  return !error && Boolean(data);
+}
+
 interface AuthState {
   session: Session | null;
   isAdmin: boolean;
@@ -31,9 +37,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setLoading(false);
         return;
       }
-      const { data, error } = await supabase.rpc("is_admin");
+      const admin = await checkAdmin(s.user.id);
       if (!alive) return;
-      setIsAdmin(!error && data === true);
+      setIsAdmin(admin);
       setLoading(false);
     };
 

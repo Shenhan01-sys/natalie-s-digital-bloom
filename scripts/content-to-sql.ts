@@ -1,5 +1,5 @@
 // Generates the SQL that loads the static portfolio content into Supabase.
-// Usage: npx tsx scripts/content-to-sql.ts > supabase/migrations/<ts>_content.sql
+// Usage: npx tsx scripts/content-to-sql.ts > supabase/migrations/<ts>_content.sql (already applied: 20261011034334)
 import { defaultContent as c, shopLinks, shopSettings } from "../src/data/content";
 
 const q = (v: unknown) => `'${JSON.stringify(v).replace(/'/g, "''")}'::jsonb`;

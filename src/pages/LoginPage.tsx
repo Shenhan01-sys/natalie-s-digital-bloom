@@ -3,7 +3,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, Eye, EyeOff, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Flower, Seal } from "@/components/Ornaments";
-import { useAuth } from "@/lib/auth";
+import { checkAdmin, useAuth } from "@/lib/auth";
 import { errorMessage, supabase, supabaseReady } from "@/lib/supabase";
 import { useSite } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
@@ -53,10 +53,9 @@ const LoginPage = () => {
     setBusy(true);
     try {
       if (mode === "login") {
-        const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
         if (error) throw error;
-        const { data: admin } = await supabase.rpc("is_admin");
-        if (!admin) {
+        if (!(await checkAdmin(data.user.id))) {
           await signOut();
           throw new Error("Akun ini tidak punya akses ke dashboard.");
         }
