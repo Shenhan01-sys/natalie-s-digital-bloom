@@ -1,201 +1,87 @@
-import { useState } from 'react';
-import { Send, Linkedin, Github, Mail, Heart, Code } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
+import { ArrowUpRight, Heart } from "lucide-react";
+import { useSite } from "@/lib/site-content";
+import { contactIcon, contactTile, isExternal } from "@/lib/contact-icons";
+import { useReveal } from "@/hooks/use-reveal";
+import { Flower, Seal } from "./Ornaments";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: 'Message sent! ✨',
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const socialLinks = [
-    {
-      icon: <Linkedin className="w-5 h-5" />,
-      href: 'https://linkedin.com/in/natalie-sulistio',
-      label: 'LinkedIn',
-    },
-    {
-      icon: <Github className="w-5 h-5" />,
-      href: 'https://github.com/natalie-sulistio',
-      label: 'GitHub',
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      href: 'mailto:natalie@example.com',
-      label: 'Email',
-    },
-  ];
+  const ref = useReveal<HTMLElement>();
+  const { contacts, profile } = useSite();
+  // Email gets a full-width tile; the rest pair up, and an odd one out spans the row.
+  const rest = contacts.filter((c) => c.kind !== "email");
+  const ordered = [...contacts.filter((c) => c.kind === "email"), ...rest];
+  const wide = (c: (typeof contacts)[number]) =>
+    c.kind === "email" || (rest.length % 2 === 1 && c === rest[rest.length - 1]);
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <p className="text-primary font-medium mb-2">Let's connect</p>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
-              Get in <span className="text-primary">Touch</span>
-            </h2>
-            <p className="text-muted-foreground mt-4 max-w-md mx-auto">
-              Open for HR Internship & Collaborative Projects. Feel free to reach out!
-            </p>
-          </div>
+    <section id="contact" ref={ref} className="relative overflow-hidden pt-4 md:pt-8">
+      <div className="container">
+        <div data-reveal className="relative overflow-hidden rounded-window bg-blush p-6 shadow-window sm:p-10 lg:p-14">
+          <Flower className="absolute right-8 top-8 h-16 w-16 opacity-80" color="hsl(var(--petal))" />
+          <Flower className="absolute bottom-8 right-[42%] hidden h-10 w-10 md:block" color="#fff" />
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="glass-card rounded-2xl p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-foreground">
-                    Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="border-0 border-b-2 border-border rounded-none bg-transparent focus:border-primary transition-colors px-0"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-foreground">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="border-0 border-b-2 border-border rounded-none bg-transparent focus:border-primary transition-colors px-0"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-foreground">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="border-0 border-b-2 border-border rounded-none bg-transparent focus:border-primary transition-colors px-0 min-h-[120px] resize-none"
-                    placeholder="Your message..."
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-accent text-primary-foreground rounded-full py-6 group"
-                >
-                  <span className={isSubmitting ? 'opacity-0' : ''}>
-                    Send Message
-                  </span>
-                  <Send
-                    className={`w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${isSubmitting ? 'absolute animate-ping' : ''
-                      }`}
-                  />
-                </Button>
-              </form>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="glass-card rounded-2xl p-8">
-                <h3 className="text-lg font-serif font-bold text-foreground mb-6">
-                  Connect with me
-                </h3>
-                <div className="flex gap-4">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 bounce-hover"
-                      aria-label={link.label}
-                    >
-                      {link.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="glass-card rounded-2xl p-8">
-                <h3 className="text-lg font-serif font-bold text-foreground mb-4">
-                  Location
-                </h3>
-                <p className="text-muted-foreground">
-                  📍 Yogyakarta, Indonesia
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Available for remote work and on-site opportunities in Yogyakarta.
-                </p>
-              </div>
-
-              <div className="text-center md:text-left">
-                <p className="text-muted-foreground italic">
-                  "The future of HR lies at the intersection of human empathy and technological innovation."
-                </p>
-                <p className="font-serif text-primary mt-2">— Natalie N.S.</p>
+          <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+            <div>
+              <p className="text-sm font-semibold text-accent-foreground">Contact</p>
+              <h2 className="mt-2 text-display text-foreground">
+                Let’s work <em className="text-primary">together</em>
+              </h2>
+              <div className="relative mt-8 flex items-end gap-4">
+                <img
+                  src="/deco/phone.webp"
+                  alt=""
+                  loading="lazy"
+                  className="w-40 -rotate-6 drop-shadow-[0_18px_22px_rgba(184,54,90,.3)] sm:w-48"
+                />
+                <Seal className="mb-4 w-20 rotate-12" />
               </div>
             </div>
+
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {ordered.map((c) => {
+                const tile = contactTile[c.kind];
+                const Icon = contactIcon[c.kind] ?? contactIcon.link;
+                return (
+                <li key={`${c.kind}-${c.value}`} className={wide(c) ? "sm:col-span-2" : undefined}>
+                  <a
+                    href={c.href}
+                    target={isExternal(c.href) ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="lift group flex h-full flex-col gap-5 rounded-card bg-card p-5 shadow-soft"
+                  >
+                    <span className="flex items-start justify-between">
+                      {tile ? (
+                        <img src={tile} alt="" loading="lazy" className="h-12 w-12 rounded-[0.9rem] object-contain" />
+                      ) : (
+                        <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-blush text-primary">
+                          <Icon className="h-6 w-6" />
+                        </span>
+                      )}
+                      <ArrowUpRight
+                        aria-hidden
+                        className="h-5 w-5 text-muted-foreground transition-[transform,color] duration-base ease-soft group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                      />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold text-muted-foreground">{c.label}</span>
+                      <span className={`mt-0.5 block font-semibold text-foreground ${c.kind === "email" ? "[overflow-wrap:anywhere]" : "whitespace-nowrap"}`}>{c.value}</span>
+                    </span>
+                  </a>
+                </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-20 pt-8 border-t border-border">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <p className="text-muted-foreground text-sm">
-              Made with <Heart className="w-4 h-4 inline text-primary" /> by Natalie and{' '}
-              <Code className="w-4 h-4 inline text-primary" /> by Hans Gunawan
-            </p>
-            <p className="text-muted-foreground text-sm">
-              © 2026 Natalie Netania Sulistio. All rights reserved.
-            </p>
-          </div>
-        </div>
+      <footer className="container flex flex-col items-center justify-between gap-3 py-10 text-center text-sm text-muted-foreground md:flex-row md:text-left">
+        <p>
+          © {new Date().getFullYear()} {profile.name}
+        </p>
+        <p className="inline-flex items-center gap-1.5">
+          Made with <Heart className="h-4 w-4 fill-rose text-rose" aria-label="love" /> by Natalie &amp; Hans Gunawan
+        </p>
       </footer>
     </section>
   );

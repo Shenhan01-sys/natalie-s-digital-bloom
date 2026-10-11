@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 
+// Tokens mirror MASTER.md / src/index.css
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -7,15 +8,21 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.25rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1240px",
       },
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['"Plus Jakarta Sans"', '"Segoe UI"', "Roboto", "system-ui", "sans-serif"],
+        display: ['"IM Fell English"', '"Iowan Old Style"', "Georgia", "serif"],
+        script: ['"Pinyon Script"', '"Snell Roundhand"', "cursive"],
+      },
+      fontSize: {
+        display: ["clamp(2.6rem, 6vw, 4.75rem)", { lineHeight: "1.02" }],
+        h2: ["clamp(2.1rem, 4.2vw, 3.25rem)", { lineHeight: "1.08" }],
+        name: ["clamp(4.5rem, 11vw, 9rem)", { lineHeight: "0.9" }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,6 +30,14 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        rose: "hsl(var(--rose))",
+        blush: {
+          DEFAULT: "hsl(var(--blush))",
+          2: "hsl(var(--blush-2))",
+        },
+        petal: "hsl(var(--petal))",
+        milk: "hsl(var(--milk))",
+        ink: "hsl(var(--ink))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -51,22 +66,28 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "gradient-warm": "hsl(var(--gradient-warm))",
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
       },
       borderRadius: {
+        window: "2.5rem",
+        card: "1.75rem",
+        widget: "1.375rem",
+        img: "1.125rem",
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 6px)",
+        sm: "calc(var(--radius) - 10px)",
+      },
+      boxShadow: {
+        soft: "0 1px 0 rgba(255,255,255,.9) inset, 0 12px 32px -16px rgba(184,54,90,.28)",
+        lift: "0 1px 0 rgba(255,255,255,.9) inset, 0 22px 44px -18px rgba(184,54,90,.38)",
+        window: "0 40px 90px -40px rgba(184,54,90,.40), 0 2px 0 rgba(255,255,255,.9) inset",
+      },
+      transitionDuration: {
+        fast: "180ms",
+        base: "320ms",
+        slow: "640ms",
+      },
+      transitionTimingFunction: {
+        soft: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       keyframes: {
         "accordion-down": {
@@ -77,47 +98,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        "blob-morph": {
-          "0%, 100%": {
-            borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-            transform: "rotate(0deg) scale(1)",
-          },
-          "50%": {
-            borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%",
-            transform: "rotate(180deg) scale(1.05)",
-          },
-        },
-        "bubble-float": {
-          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
-          "33%": { transform: "translateY(-8px) rotate(2deg)" },
-          "66%": { transform: "translateY(4px) rotate(-2deg)" },
-        },
-        "fade-in-up": {
-          from: { opacity: "0", transform: "translateY(30px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        "slide-in-left": {
-          from: { opacity: "0", transform: "translateX(-50px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
-        "slide-in-right": {
-          from: { opacity: "0", transform: "translateX(50px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float": "float 6s ease-in-out infinite",
-        "blob-morph": "blob-morph 8s ease-in-out infinite",
-        "bubble-float": "bubble-float 4s ease-in-out infinite",
-        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
-        "slide-in-left": "slide-in-left 0.8s ease-out forwards",
-        "slide-in-right": "slide-in-right 0.8s ease-out forwards",
       },
     },
   },
